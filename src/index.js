@@ -1,5 +1,7 @@
 import './index.html';
 import './style.css';
+import Layer from './Layer/index.js';
+import './Layer/style.css';
 
 console.log('funguju!');
 
@@ -18,9 +20,6 @@ for (let i = 0; i < navigaceAll.length; i++) {
   });
 }
 
-//Při opětovném kliknutí na tlačítko chceme zařídit, aby se objednávka zrušila a nápis na tlačítku se vrátil zpět na Objednat. Tohoto můžete docílit například tak, že si vytvoříte globální proměnnou ordered, která bude obsahovat true nebo false podle toho, zde je nápoj objednaný či nikoliv.
-//Ve chvíli, kdy máte objednávání funkční commitněte váš kód se smysluplnou zprávnou a pushněte jej.
-
 let ordered = false;
 const orderBtn = document
   .querySelector('.order-btn')
@@ -38,3 +37,43 @@ const orderBtn = document
       ordered = false;
     }
   });
+
+//---------------------------komponenta-------------------
+//komponenta
+
+/*const Layer = (props) => {
+  return `
+  <div class="layer">
+  <div class="layer__color" style="background-color:${props.color}"></div>
+  <div class="layer__label">${props.label}</div>
+</div>`;
+};*/
+
+//data
+
+const layers = [
+  {
+    color: '#feeeca',
+    label: 'mléčná pěna',
+  },
+  {
+    color: '#fed7b0',
+    label: 'teplé mléko',
+  },
+  {
+    color: '#613916',
+    label: 'espresso',
+  },
+];
+
+//kombinace dat a html cyklus for
+const LayersList = (props) => {
+  let result = '';
+  for (let i = 0; i < props.length; i++) {
+    result += Layer(props[i]);
+  }
+  return result;
+};
+//kde se má komponenta vypsat
+const elementDrink = document.querySelector('.drink__info');
+elementDrink.innerHTML = LayersList(layers);
