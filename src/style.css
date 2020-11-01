@@ -242,6 +242,13 @@ nav a:hover {
   background-attachment: fixed;
 }
 
+.popisGalerie {
+  max-width: 20rem;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 .contacts {
   margin-bottom: 4rem;
 
